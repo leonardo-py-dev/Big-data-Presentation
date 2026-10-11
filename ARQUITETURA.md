@@ -141,10 +141,10 @@ Listagem com filtros (nível, área, tempo, rede, período) + paginação com te
 
 ## 10. Deploy (front e API separados)
 
-- **Frontend → Vercel, estático**: `vercel.json` na raiz com build do workspace client e `outputDirectory: client/dist`. Sem functions, sem rewrites — o client usa `/api` relativo, que no dev vai pelo proxy do Vite e em produção... **atenção**: em produção separada, o client precisa apontar para a URL da API (ver pendência abaixo).
-- **API → host Node long-running** (Render/Railway/Fly/VPS): `npm install` na raiz + `npm run start --workspace=@pesquisa/server`. Sem adaptação serverless — `start.js` conecta e escuta; rate limits em memória voltam a ser exatos.
-- **Cookie cross-site**: front e API em domínios diferentes exigem `SameSite=None` + `Secure` — por isso `COOKIE_SECURE=true` em produção (e `false` no dev http). `CLIENT_ORIGIN` = URL pública do front; CORS com `credentials:true` já configurado.
-- **Pendente do lado humano**: importar o repo na Vercel; subir a API no host escolhido com env vars (`MONGODB_URI`, `JWT_SECRET`, `CLIENT_ORIGIN`, `COOKIE_SECURE=true`); liberar `0.0.0.0/0` no Atlas Network Access; seed pela máquina local.
+- **Frontend → Vercel, estático**: `vercel.json` neutro (só `$schema` — dashboards mandam; um arquivo compartilhado não serve a dois projetos com necessidades opostas). Projeto do front configura build/output pelo dashboard.
+- **API → projeto `server` na Vercel**: `api/index.js` como function; `server/src/app.js` com `export default app` (a plataforma carrega o módulo como function — sem default, 500 "Invalid export"). Verificado no ar: `/api/health` → 200, admin sem cookie → 401. URL: https://server-beta-topaz-91.vercel.app
+- **Cookie cross-site**: `COOKIE_SECURE=true` em produção (`SameSite=None` + Secure); `CLIENT_ORIGIN` = URL do front.
+- **Pendente**: `VITE_API_URL` no projeto do front + redeploy; `CLIENT_ORIGIN` apontando para o front publicado.
 - **Limites assumidos**: rate limit aproximado por instância (suficiente para 70 respostas); cold start na primeira chamada.
 
 ---
