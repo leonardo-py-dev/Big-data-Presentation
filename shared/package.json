@@ -1,0 +1,14 @@
+{
+  "name": "@pesquisa/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Enums, labels e schemas Zod compartilhados entre client e server. Fonte única da verdade para validação.",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}

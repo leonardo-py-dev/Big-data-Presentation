@@ -1,0 +1,10 @@
+node_modules/
+.env
+atlas-credentials.env
+coverage/
+dist/
+build/
+.DS_Store
+# Skills locais: reinstaláveis via skills-lock.json (não commitar o peso)
+.agents/skills/
+*.log

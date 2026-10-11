@@ -1,0 +1,18 @@
+{
+  "name": "pesquisa-redes-sociais",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pesquisa sobre o uso de redes sociais e sua influência no cotidiano de estudantes",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "start:server": "npm run start --workspace=server",
+    "test": "npm run test --workspaces --if-present"
+  }
+}
