@@ -10,4 +10,4 @@ if (!process.env.MONGODB_URI || !process.env.MONGODB_URI.includes("_test")) {
   console.error("Trava: URI de teste inválida. Abortando.");
   process.exit(1);
 }
-await import("./src/app.js");
+await import("./src/start.js");

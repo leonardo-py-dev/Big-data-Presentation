@@ -6,8 +6,8 @@
   "description": "API Express da pesquisa sobre uso de redes sociais",
   "main": "./src/app.js",
   "scripts": {
-    "dev": "node --watch src/app.js",
-    "start": "node src/app.js",
+    "dev": "node --watch src/start.js",
+    "start": "node src/start.js",
     "seed": "node src/scripts/seed-admin.js",
     "seed:synthetic": "node src/scripts/seed-synthetic.js"
   },
