@@ -144,7 +144,7 @@ Listagem com filtros (nível, área, tempo, rede, período) + paginação com te
 - **Frontend → Vercel, estático**: `vercel.json` neutro (só `$schema` — dashboards mandam; um arquivo compartilhado não serve a dois projetos com necessidades opostas). Projeto do front configura build/output pelo dashboard.
 - **API → Render (long-running)**: `start.js` conecta e escuta; `PORT` injetada pela plataforma; rate limits em memória voltam a ser exatos. URL: https://big-data-presentation.onrender.com — ciclo completo verificado em produção (POST 201 → summary n=1 → delete 204 → n=0). Tentativa serverless na Vercel abandonada: function subia e roteava, mas a conexão Mongoose→Atlas nunca completava a partir da Vercel (`buffering timed out` persistente com credencial válida e firewall aberto) — causa raiz no caminho de rede, fora do alcance do código. `api/index.js` mantido no repo como opção documentada.
 - **Cookie cross-site**: `COOKIE_SECURE=true` em produção (`SameSite=None` + Secure); `CLIENT_ORIGIN` = URL do front.
-- **Pendente**: `VITE_API_URL` no projeto do front + redeploy; `CLIENT_ORIGIN` apontando para o front publicado.
+- **Pendente**: nada bloqueante. Produção verificada de ponta a ponta pela UI (landing → fluxo → dashboard n=1 → exclusão pelo painel, 5/5, banco zerado).
 - **Limites assumidos**: rate limit aproximado por instância (suficiente para 70 respostas); cold start na primeira chamada.
 
 ---
