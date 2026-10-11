@@ -32,3 +32,7 @@ export function createApp() {
 }
 
 export const app = createApp();
+
+// Default export para a Vercel aceitar este módulo como function,
+// caso o roteamento aponte para cá em vez de /api/index.js.
+export default app;
