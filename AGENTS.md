@@ -89,6 +89,16 @@ Duas que o §23 **não** cobre e continuam em aberto:
 Decidido: monorepo npm com `shared/` como fonte única (enums + schemas Zod). Client e server importam de `@pesquisa/shared`; nada de validação duplicada.
 - **MongoDB local.** Atlas real ou mock em memória para desenvolvimento? Afeta como o dev server sobe e como teste de integração roda.
 
+## Futuro — implementar quando houver gatilho (não agora)
+
+- **Rotação da senha do Atlas** — PENDENTE e urgente (senha exposta em transcript). Depois: atualizar `.env` (3 lugares), env da Render e da Vercel-server (se mantido).
+- **README.md de setup** — como clonar, `.env`, seed, scripts, deploys. Sugerido, ainda não pedido.
+- **Reduced-motion no CSS** — micro-transições e smooth scroll ainda não respeitam; SpectralDrape e CometDial já respeitam.
+- **Corte de amostra mínima** — hoje o painel avisa; se o pesquisador preferir, esconder comparações com n < 5 em vez de só avisar.
+- **CAPTCHA/honeypot** — só se spam aparecer (rate limit basta por ora, §23 nº 8).
+- **Limpeza**: pausar/deletar o projeto `server` na Vercel (abandonado após migração p/ Render); remover `api/index.js` se a volta ao serverless for descartada em definitivo.
+- **Piloto e revisão de consentimento** — humanos, antes da coleta real (§19 Fase 4, §23 nº 3).
+
 ## Não está no escopo (§4.2)
 
 Cadastro de participante · login de respondente · coleta de dado pessoal · feed ou interação entre respondentes · diagnóstico psicológico · app mobile nativo · integração com API das redes sociais.
