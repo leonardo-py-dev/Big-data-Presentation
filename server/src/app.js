@@ -15,6 +15,11 @@ import { errorHandler, notFound } from './middlewares/errorHandler.js';
 export function createApp() {
   const app = express();
 
+  // Atrás de proxy (Vercel): confia no primeiro hop para o rate limit
+  // identificar o IP real via X-Forwarded-For. Sem isso, o
+  // express-rate-limit lança ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+  app.set('trust proxy', 1);
+
   app.use(helmet());
   // CORS restrito à origem do frontend — nunca "*" com credencial (RNF04).
   // credentials:true para o cookie de sessão admin (via proxy same-origin no dev).
