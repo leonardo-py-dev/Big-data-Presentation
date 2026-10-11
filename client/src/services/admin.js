@@ -4,7 +4,7 @@
  * 401 vira erro tipado para o guard redirecionar ao login.
  */
 async function adminFetch(path, options = {}) {
-  const res = await fetch(`/api/admin${path}`, {
+  const res = await fetch(`${API_BASE}/api/admin${path}`, {
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     ...options,
@@ -41,6 +41,8 @@ export const listResponses = (params) =>
 
 export const deleteResponse = (id) => adminFetch(`/survey-responses/${id}`, { method: 'DELETE' });
 
+const API_BASE = import.meta.env.VITE_API_URL ?? '';
+
 /** Download via <a>: mesmo origem, o navegador envia o cookie sozinho. */
 export const exportUrl = (params) =>
-  `/api/admin/survey-responses/export.csv?${new URLSearchParams(params)}`;
+  `${API_BASE}/api/admin/survey-responses/export.csv?${new URLSearchParams(params)}`;

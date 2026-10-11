@@ -21,10 +21,14 @@ export function signSession(admin) {
 }
 
 export function cookieOptions() {
+  // Produção cross-site (front na Vercel + API em outro host): o navegador
+  // só envia o cookie com SameSite=None + Secure. Em dev local (http),
+  // None+Secure seria rejeitado — por isso a chave COOKIE_SECURE.
+  const secureCookies = env.COOKIE_SECURE;
   return {
     httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    sameSite: secureCookies ? 'none' : 'lax',
+    secure: secureCookies,
     maxAge: SESSION_TTL_MS,
     path: '/',
   };

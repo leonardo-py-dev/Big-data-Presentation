@@ -139,12 +139,12 @@ Listagem com filtros (nível, área, tempo, rede, período) + paginação com te
 
 ---
 
-## 10. Deploy (Vercel)
+## 10. Deploy (front e API separados)
 
-- `server/src/app.js` exporta o app puro; o boot (connect + listen) vive em `server/src/start.js` (dev local inalterado).
-- `connectDb` com cache: serverless reaproveita a conexão entre invocações mornas em vez de abrir uma por request (o pool do Atlas estouraria).
-- `api/index.js` é a porta serverless (`/api/*` via rewrite do `vercel.json`); o build publica `client/dist`.
-- **Pendente do lado humano**: importar o repo na Vercel, setar env vars (`MONGODB_URI`, `JWT_SECRET`, `CLIENT_ORIGIN`), liberar `0.0.0.0/0` no Atlas Network Access, rodar o seed pela máquina local.
+- **Frontend → Vercel, estático**: `vercel.json` na raiz com build do workspace client e `outputDirectory: client/dist`. Sem functions, sem rewrites — o client usa `/api` relativo, que no dev vai pelo proxy do Vite e em produção... **atenção**: em produção separada, o client precisa apontar para a URL da API (ver pendência abaixo).
+- **API → host Node long-running** (Render/Railway/Fly/VPS): `npm install` na raiz + `npm run start --workspace=@pesquisa/server`. Sem adaptação serverless — `start.js` conecta e escuta; rate limits em memória voltam a ser exatos.
+- **Cookie cross-site**: front e API em domínios diferentes exigem `SameSite=None` + `Secure` — por isso `COOKIE_SECURE=true` em produção (e `false` no dev http). `CLIENT_ORIGIN` = URL pública do front; CORS com `credentials:true` já configurado.
+- **Pendente do lado humano**: importar o repo na Vercel; subir a API no host escolhido com env vars (`MONGODB_URI`, `JWT_SECRET`, `CLIENT_ORIGIN`, `COOKIE_SECURE=true`); liberar `0.0.0.0/0` no Atlas Network Access; seed pela máquina local.
 - **Limites assumidos**: rate limit aproximado por instância (suficiente para 70 respostas); cold start na primeira chamada.
 
 ---

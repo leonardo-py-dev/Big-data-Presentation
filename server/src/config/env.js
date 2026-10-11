@@ -27,6 +27,7 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(32, {
     message: 'JWT_SECRET precisa de no mínimo 32 caracteres aleatórios.',
   }),
+  COOKIE_SECURE: z.coerce.boolean().default(false),
 });
 
 let parsed;
