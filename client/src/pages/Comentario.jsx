@@ -28,7 +28,7 @@ export default function Comentario() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={6} total={7} />
       <h1>Comentário final</h1>
       <p className="lead">

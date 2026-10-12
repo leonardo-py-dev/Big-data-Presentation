@@ -28,7 +28,7 @@ export default function Influencia() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={4} total={7} />
       <h1>Influência no cotidiano</h1>
       <p className="lead">
@@ -43,6 +43,7 @@ export default function Influencia() {
             name={`influenceRatings.${item.value}`}
             register={register}
             error={errors.influenceRatings?.[item.value]}
+            grid
           />
         ))}
         <StepNav onBack={() => navigate('/pesquisa/habitos')} submitting={isSubmitting} />

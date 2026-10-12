@@ -42,7 +42,7 @@ export default function Habitos() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={3} total={7} />
       <h1>Hábitos de uso</h1>
       <form onSubmit={handleSubmit(onNext)} noValidate>
@@ -52,6 +52,7 @@ export default function Habitos() {
           options={SOCIAL_NETWORKS}
           register={register}
           error={errors.socialNetworks}
+          grid
         />
         {mainOptions.length > 0 && (
           <SelectField
@@ -70,6 +71,7 @@ export default function Habitos() {
           register={register}
           error={errors.dailyUsage}
           required
+          grid
         />
         <h2>Com que frequência você acessa redes sociais nos seguintes momentos?</h2>
         {ACCESS_SITUATIONS.map((s) => (
@@ -79,6 +81,7 @@ export default function Habitos() {
             name={`accessSituations.${s.value}`}
             register={register}
             error={errors.accessSituations?.[s.value]}
+            grid
           />
         ))}
         <SelectField

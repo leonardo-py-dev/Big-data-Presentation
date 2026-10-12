@@ -39,7 +39,7 @@ export default function BemEstar() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={5} total={7} />
       <h1>Estudos, sono e bem-estar</h1>
       <form onSubmit={handleSubmit(onNext)} noValidate>
@@ -49,6 +49,7 @@ export default function BemEstar() {
           options={FREQUENCY_OPTIONS}
           register={register}
           error={errors.sleepImpact}
+          grid
         />
         <RadioGroup
           legend="Com que frequência você verifica redes sociais enquanto deveria estar estudando?"
@@ -56,6 +57,7 @@ export default function BemEstar() {
           options={FREQUENCY_OPTIONS}
           register={register}
           error={errors.studyCheckingFrequency}
+          grid
         />
         <RadioGroup
           legend="Como você avalia o impacto das redes sociais na sua produtividade acadêmica?"
@@ -63,6 +65,7 @@ export default function BemEstar() {
           options={PRODUCTIVITY_IMPACTS}
           register={register}
           error={errors.academicProductivityImpact}
+          grid
         />
         <CheckboxGroup
           legend="Como você costuma se sentir depois de passar muito tempo nas redes sociais?"
@@ -70,6 +73,7 @@ export default function BemEstar() {
           options={POST_USE_FEELINGS}
           register={register}
           error={errors.postUseFeelings}
+          grid
         />
         <RadioGroup
           legend="Você já tentou reduzir o tempo de uso?"
@@ -77,6 +81,7 @@ export default function BemEstar() {
           options={REDUCE_ATTEMPTS}
           register={register}
           error={errors.triedToReduce}
+          grid
         />
         <CheckboxGroup
           legend="Você utiliza alguma estratégia para controlar o tempo de uso?"
@@ -84,6 +89,7 @@ export default function BemEstar() {
           options={CONTROL_METHODS}
           register={register}
           error={errors.controlMethods}
+          grid
         />
         <StepNav onBack={() => navigate('/pesquisa/influencia')} submitting={isSubmitting} />
       </form>
