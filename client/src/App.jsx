@@ -16,6 +16,7 @@ import Concluida from './pages/Concluida.jsx';
 // Rotas admin em chunks separados: Recharts (~450 kB) não entra no bundle
 // inicial do questionário — crítico para conexão móvel (RNF02).
 const Login = lazy(() => import('./pages/admin/Login.jsx'));
+const AdminLayout = lazy(() => import('./pages/admin/AdminLayout.jsx'));
 const Dashboard = lazy(() => import('./pages/admin/Dashboard.jsx'));
 const Respostas = lazy(() => import('./pages/admin/Respostas.jsx'));
 import RequireAdmin from './pages/admin/RequireAdmin.jsx';
@@ -60,21 +61,28 @@ export default function App() {
           element={
             <RequireAdmin>
               <Suspense fallback={<div className="container"><p className="lead">Carregando…</p></div>}>
-                <Dashboard />
+                <AdminLayout />
               </Suspense>
             </RequireAdmin>
           }
-        />
-        <Route
-          path="/admin/respostas"
-          element={
-            <RequireAdmin>
+        >
+          <Route
+            index
+            element={
+              <Suspense fallback={<div className="container"><p className="lead">Carregando…</p></div>}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="respostas"
+            element={
               <Suspense fallback={<div className="container"><p className="lead">Carregando…</p></div>}>
                 <Respostas />
               </Suspense>
-            </RequireAdmin>
-          }
-        />
+            }
+          />
+        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </DraftProvider>
