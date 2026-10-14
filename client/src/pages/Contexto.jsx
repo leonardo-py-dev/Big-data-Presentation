@@ -35,7 +35,7 @@ export default function Contexto() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={2} total={7} />
       <h1>Contexto acadêmico</h1>
       <form onSubmit={handleSubmit(onNext)} noValidate>

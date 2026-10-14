@@ -78,7 +78,7 @@ export default function Revisao() {
 
   const d = draft;
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={7} total={7} />
       <h1>Revisão</h1>
       <p className="lead">

@@ -38,7 +38,7 @@ export default function Consent() {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <Progress current={1} total={7} />
       <h1>Consentimento</h1>
       <p className="lead">

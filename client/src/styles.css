@@ -16,7 +16,7 @@
   --primary-hover: #dcdcdc;
   --error: #f87171;
   --radius: 8px;
-  --spacing: 1rem;
+  --pad: 1rem;
   --font-sans: 'Ubuntu', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif: 'Poly', Georgia, serif;
 }
@@ -40,7 +40,16 @@ body {
 .container {
   max-width: 640px;
   margin: 0 auto;
-  padding: var(--spacing);
+  padding: var(--pad);
+  padding-bottom: 3rem;
+}
+
+/* Etapas do questionário: mesma coluna única no mobile; no desktop alarga
+   para ~920px para não concentrar o conteúdo numa faixa estreita. */
+.container-form {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--pad);
   padding-bottom: 3rem;
 }
 
@@ -533,46 +542,31 @@ a.btn-secondary {
   font-weight: 700;
 }
 
-/* ---------- FAQ ---------- */
-.faq {
-  border-bottom: 1px solid var(--border);
-  padding: 0.4rem 0;
-  max-width: 760px;
-  margin: 0 auto;
+/* ---------- Garantias (no lugar do FAQ) ---------- */
+.guarantee {
+  position: relative;
 }
 
-.faq summary {
-  padding: 1rem 0.25rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  cursor: pointer;
-  min-height: 48px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
+.guarantee-check {
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--fg);
+  border-radius: 50%;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.faq summary::-webkit-details-marker {
-  display: none;
+.guarantees-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
 
-.faq summary::after {
-  content: '+';
-  font-size: 1.4rem;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-.faq[open] summary::after {
-  content: '–';
-}
-
-.faq p {
-  margin: 0;
-  padding: 0 0.25rem 1.1rem;
-  color: var(--muted);
+.guarantees-cta .btn {
+  min-width: 220px;
 }
 
 /* ---------- CTA final + footer ---------- */
@@ -633,206 +627,7 @@ a.btn-secondary {
   align-items: center;
 }
 
-/* ---------- Área administrativa ---------- */
-.admin {
-  padding-top: 6rem;
-  padding-bottom: 3rem;
-}
-
-.admin-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.admin-header h1 {
-  margin: 0;
-}
-
-.admin-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.admin-actions .btn {
-  flex: none;
-}
-
-.stat-grid {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  margin-bottom: 2rem;
-}
-
-.stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-}
-
-.stat-card strong {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.stat-card span {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.chart-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.4rem;
-  margin-bottom: 1.25rem;
-}
-
-.chart-card h2 {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0 1rem;
-}
-
-.sample-n {
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 0.95rem;
-}
-
-.filters {
-  display: grid;
-  gap: 0 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  align-items: end;
-  margin-bottom: 1.5rem;
-}
-
-.filters .field {
-  margin-bottom: 0.9rem;
-}
-
-.filters-actions {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.filters-actions .btn {
-  flex: 1;
-  padding: 0.6rem 1rem;
-}
-
-input[type='email'],
-input[type='password'],
-input[type='text'],
-input[type='date'] {
-  width: 100%;
-  font: inherit;
-  padding: 0.6rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--fg);
-  min-height: 48px;
-  color-scheme: dark;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-bottom: 1.25rem;
-}
-
-table.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.92rem;
-  min-width: 720px;
-}
-
-.admin-table th,
-.admin-table td {
-  text-align: left;
-  padding: 0.65rem 0.9rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
-
-.admin-table thead th {
-  color: var(--muted);
-  font-weight: 500;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.admin-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.row-actions {
-  white-space: nowrap;
-}
-
-.link-btn {
-  background: none;
-  border: 0;
-  padding: 0.3rem 0.4rem;
-  margin-right: 0.5rem;
-  font: inherit;
-  font-size: 0.9rem;
-  color: var(--fg);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  min-height: 44px;
-}
-
-.link-btn.danger {
-  color: var(--error);
-}
-
-.detail-row td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.detail-grid {
-  margin: 0;
-  display: grid;
-  gap: 0.5rem 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.detail-grid dt {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.detail-grid dd {
-  margin: 0.1rem 0 0.4rem;
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--muted);
-}
-
-.pagination .btn {
-  flex: none;
-  padding: 0.6rem 1.1rem;
-}
+/* ---------- Área administrativa: componentes shadcn — ver src/admin.css ---------- */
 
 /* Acesso admin: discreto, mas legível (contraste mantido) */
 .discreet {
@@ -1003,8 +798,24 @@ select option {
 
 /* ---------- Desktop ---------- */
 @media (min-width: 900px) {
+  .container-form {
+    max-width: 920px;
+  }
+
+  /* Listas longas de alternativas em 2 colunas (opt-in via prop `grid`).
+     Escalas 1–5 e checkboxes ocupam a largura sem espremer o texto. */
+  .container-form .field-grid .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 0.75rem;
+  }
+
   .cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards.guarantees {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .split {

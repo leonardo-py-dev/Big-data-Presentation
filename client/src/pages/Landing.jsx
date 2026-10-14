@@ -197,43 +197,55 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="section" id="faq" aria-labelledby="faq-t">
+        <section className="section" id="garantias" aria-labelledby="garantias-t">
           <div className="container-wide">
-            <h2 id="faq-t" className="section-title">
-              Perguntas <span className="serif">frequentes</span>
+            <h2 id="garantias-t" className="section-title">
+              Tudo certo para <span className="serif">participar?</span>
             </h2>
-            <details className="faq">
-              <summary>Quem pode participar?</summary>
-              <p>Estudantes regularmente matriculados em uma instituição de ensino.</p>
-            </details>
-            <details className="faq">
-              <summary>Quanto tempo leva?</summary>
-              <p>
-                Aproximadamente 3 a 5 minutos. O questionário mostra seu progresso em todas as
-                etapas.
-              </p>
-            </details>
-            <details className="faq">
-              <summary>Posso parar no meio?</summary>
-              <p>
-                Sim. A participação é voluntária do início ao fim — basta fechar a página. Nada é
-                registrado até você clicar em “Enviar respostas”.
-              </p>
-            </details>
-            <details className="faq">
-              <summary>Preciso criar conta ou informar e-mail?</summary>
-              <p>
-                Não. Não há cadastro, login nem qualquer dado de contato. A pesquisa é anônima por
-                desenho.
-              </p>
-            </details>
-            <details className="faq">
-              <summary>O que acontece com as minhas respostas?</summary>
-              <p>
-                Elas são armazenadas de forma estruturada e analisadas em conjunto com as demais
-                respostas. Pesquisadores autorizados veem apenas dados agregados e anonimizados.
-              </p>
-            </details>
+            <p className="section-sub">Quatro garantias antes de começar.</p>
+            <div className="cards guarantees">
+              <div className="card guarantee">
+                <span className="guarantee-check" aria-hidden="true">
+                  ✓
+                </span>
+                <strong>Quem pode participar</strong>
+                <p>Estudantes regularmente matriculados em uma instituição de ensino.</p>
+              </div>
+              <div className="card guarantee">
+                <span className="guarantee-check" aria-hidden="true">
+                  ✓
+                </span>
+                <strong>Leva 3 a 5 minutos</strong>
+                <p>
+                  Sete etapas curtas, com barra de progresso visível do início ao fim — direto no
+                  celular.
+                </p>
+              </div>
+              <div className="card guarantee">
+                <span className="guarantee-check" aria-hidden="true">
+                  ✓
+                </span>
+                <strong>Pare quando quiser</strong>
+                <p>
+                  Feche a página a qualquer momento. Nada é registrado até você clicar em
+                  “Enviar respostas”.
+                </p>
+              </div>
+              <div className="card guarantee">
+                <span className="guarantee-check" aria-hidden="true">
+                  ✓
+                </span>
+                <strong>Sem conta, sem e-mail</strong>
+                <p>
+                  Sem cadastro, login ou contato posterior. A pesquisa é anônima por desenho.
+                </p>
+              </div>
+            </div>
+            <div className="guarantees-cta">
+              <Link className="btn btn-primary" to="/pesquisa">
+                Iniciar pesquisa <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -266,7 +278,7 @@ export default function Landing() {
               <strong>A pesquisa</strong>
               <a href="#dimensoes">O que investiga</a>
               <a href="#como-funciona">Como funciona</a>
-              <a href="#faq">FAQ</a>
+              <a href="#garantias">Garantias</a>
             </nav>
             <nav aria-label="Participar">
               <strong>Participar</strong>

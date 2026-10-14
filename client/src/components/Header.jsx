@@ -21,8 +21,8 @@ export default function Header() {
         <a href="#privacidade" onClick={() => setOpen(false)}>
           Privacidade
         </a>
-        <a href="#faq" onClick={() => setOpen(false)}>
-          FAQ
+        <a href="#garantias" onClick={() => setOpen(false)}>
+          Garantias
         </a>
       </nav>
       <Link className="btn btn-primary" to="/pesquisa">

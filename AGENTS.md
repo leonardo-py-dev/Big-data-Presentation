@@ -57,6 +57,7 @@ A exportação respeita os filtros ativos e **jamais** inclui campo pessoal. Ind
 - **Client:** React + Vite, React Hook Form, Zod, React Router, Axios ou `fetch`, Recharts.
 - **Server:** Node.js + Express, Mongoose, Zod, Helmet, CORS, express-rate-limit, bcrypt + JWT, lib de CSV.
 - **Banco:** MongoDB, Atlas em produção, conexão por variável de ambiente.
+- **Admin (exceção registrada, branch `reforma-frontend`):** Tailwind CSS + primitivos Radix no padrão shadcn/ui (`client/src/components/ui/*`, `client/src/admin.css`), escopados ao chunk lazy do admin — bundle público não carrega Tailwind/Radix/Recharts. `lucide-react` só no admin.
 
 Estrutura em `client/src/` e `server/src/` conforme §13.
 

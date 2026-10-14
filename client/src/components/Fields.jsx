@@ -43,10 +43,10 @@ export function SelectField({ label, name, options, register, error, required })
   );
 }
 
-export function CheckboxGroup({ legend, name, options, register, error }) {
+export function CheckboxGroup({ legend, name, options, register, error, grid }) {
   const errorId = `${name}-error`;
   return (
-    <fieldset className="field" aria-describedby={error ? errorId : undefined}>
+    <fieldset className={`field${grid ? ' field-grid' : ''}`} aria-describedby={error ? errorId : undefined}>
       <legend>{legend}</legend>
       <div className="options">
         {options.map((o) => (
@@ -61,13 +61,13 @@ export function CheckboxGroup({ legend, name, options, register, error }) {
   );
 }
 
-export function RadioGroup({ legend, name, options, register, error, required }) {
+export function RadioGroup({ legend, name, options, register, error, required, grid }) {
   const errorId = `${name}-error`;
   // Radio nativo emite string ("4"); a conversão para número vive no
   // preprocess do schema (shared), pois o RHF não aplica setValueAs a radios.
   return (
     <fieldset
-      className="field"
+      className={`field${grid ? ' field-grid' : ''}`}
       aria-describedby={error ? errorId : undefined}
       aria-required={!!required}
     >
@@ -93,7 +93,7 @@ export function RadioGroup({ legend, name, options, register, error, required })
 }
 
 /** Linha da matriz de frequência — um fieldset por situação (§8.4). */
-export function MatrixRow({ legend, name, register, error }) {
+export function MatrixRow({ legend, name, register, error, grid }) {
   const scale = [
     { value: 1, label: 'Nunca' },
     { value: 2, label: 'Raramente' },
@@ -101,11 +101,11 @@ export function MatrixRow({ legend, name, register, error }) {
     { value: 4, label: 'Frequentemente' },
     { value: 5, label: 'Sempre' },
   ];
-  return <RadioGroup legend={legend} name={name} options={scale} register={register} error={error} required />;
+  return <RadioGroup legend={legend} name={name} options={scale} register={register} error={error} required grid={grid} />;
 }
 
 /** Item da escala de concordância 1–5 (§8.5). */
-export function ScaleItem({ statement, name, register, error }) {
+export function ScaleItem({ statement, name, register, error, grid }) {
   const scale = [
     { value: 1, label: '1 — Discordo totalmente' },
     { value: 2, label: '2 — Discordo parcialmente' },
@@ -113,7 +113,7 @@ export function ScaleItem({ statement, name, register, error }) {
     { value: 4, label: '4 — Concordo parcialmente' },
     { value: 5, label: '5 — Concordo totalmente' },
   ];
-  return <RadioGroup legend={statement} name={name} options={scale} register={register} error={error} required />;
+  return <RadioGroup legend={statement} name={name} options={scale} register={register} error={error} required grid={grid} />;
 }
 
 export function TextArea({ label, name, register, error, maxLength, hint }) {
