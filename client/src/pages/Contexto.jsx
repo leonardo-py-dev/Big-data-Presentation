@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { contextoSchema, EDUCATION_LEVELS, STUDY_AREAS, WORK_STATUSES, GENDERS, AGE_RANGES, SOCIAL_CLASSES, CONTENT_TYPES, HOBBIES } from '@pesquisa/shared';
 import { useDraft, cleanEmpty, stripEmpty } from '../draft.jsx';
 import Progress from '../components/Progress.jsx';
-import { SelectField, RadioGroup, StepNav } from '../components/Fields.jsx';
+import { SelectField, RadioGroup, CheckboxGroup, StepNav } from '../components/Fields.jsx';
 
 /** Etapa de contexto acadêmico — `/pesquisa/contexto` (§8.3). */
 export default function Contexto() {
@@ -82,15 +82,15 @@ export default function Contexto() {
           register={register}
           error={errors.socialClass}
         />
-        <SelectField
-          label="Principais tipos de conteúdo consumido"
+        <CheckboxGroup
+          legend="Principais tipos de conteúdo consumido"
           name="contentTypes"
           options={CONTENT_TYPES}
           register={register}
           error={errors.contentTypes}
         />
-        <SelectField
-          label="Principais hobbies / atividades de lazer"
+        <CheckboxGroup
+          legend="Principais hobbies / atividades de lazer"
           name="hobbies"
           options={HOBBIES}
           register={register}
