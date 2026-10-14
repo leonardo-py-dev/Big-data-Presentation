@@ -38,6 +38,15 @@ try {
   for (const issue of err.issues ?? []) {
     console.error(`  - ${issue.path.join('.') || '(env)'}: ${issue.message}`);
   }
+  // Serverless (Vercel): process.exit aqui mataria a instância da function.
+  // Lança para o handler (/api/index.js) converter em 500 JSON.
+  // Long-running (start.js): mantém o fail-fast com exit.
+  if (process.env.VERCEL) {
+    const boot = new Error('Configuração inválida.');
+    boot.code = 'MISCONFIGURED';
+    boot.status = 500;
+    throw boot;
+  }
   console.error('Copie .env.example para .env e preencha os valores.');
   process.exit(1);
 }
