@@ -169,5 +169,61 @@ export const CONTROL_METHODS = [
   { value: 'other', label: 'Outra' },
 ];
 
+/** Gênero — §3.1, opcional. */
+export const GENDERS = [
+  { value: 'male', label: 'Masculino' },
+  { value: 'female', label: 'Feminino' },
+  { value: 'non_binary', label: 'Não binário' },
+  { value: 'other', label: 'Outro' },
+  { value: 'prefer_not_to_answer', label: 'Prefiro não responder' },
+];
+
+/** Faixa etária — §3.2, opcional. */
+export const AGE_RANGES = [
+  { value: 'under_18', label: 'Menos de 18 anos' },
+  { value: '18_24', label: '18 a 24 anos' },
+  { value: '25_34', label: '25 a 34 anos' },
+  { value: '35_44', label: '35 a 44 anos' },
+  { value: '45_plus', label: '45 anos ou mais' },
+  { value: 'prefer_not_to_answer', label: 'Prefiro não responder' },
+];
+
+/** Classe social (autoclassificação) — §3.3, opcional. */
+export const SOCIAL_CLASSES = [
+  { value: 'lower', label: 'Baixa' },
+  { value: 'lower_middle', label: 'Média-baixa' },
+  { value: 'middle', label: 'Média' },
+  { value: 'upper_middle', label: 'Média-alta' },
+  { value: 'upper', label: 'Alta' },
+  { value: 'prefer_not_to_answer', label: 'Prefiro não responder' },
+];
+
+/** Tipo de conteúdo consumido — §3.4, checkbox múltiplo, opcional. */
+export const CONTENT_TYPES = [
+  { value: 'entertainment_humor', label: 'Entretenimento / humor' },
+  { value: 'news_politics', label: 'Notícias e política' },
+  { value: 'education_science', label: 'Educação e ciência' },
+  { value: 'lifestyle_fashion', label: 'Estilo de vida e moda' },
+  { value: 'gaming', label: 'Jogos' },
+  { value: 'music_arts', label: 'Música e artes' },
+  { value: 'sports', label: 'Esportes' },
+  { value: 'finance_business', label: 'Finanças e negócios' },
+  { value: 'other', label: 'Outro' },
+];
+
+/** Principais hobbies / atividades de lazer — §3.5, checkbox múltiplo, opcional. */
+export const HOBBIES = [
+  { value: 'reading', label: 'Leitura' },
+  { value: 'sports_physical', label: 'Esportes / atividade física' },
+  { value: 'gaming_video', label: 'Videogames' },
+  { value: 'music_playing', label: 'Tocar instrumento / música' },
+  { value: 'creative_arts', label: 'Artes visuais / criatividade' },
+  { value: 'social_activities', label: 'Socialização presencial' },
+  { value: 'streaming_series', label: 'Séries / streaming' },
+  { value: 'outdoor', label: 'Atividades ao ar livre' },
+  { value: 'volunteering', label: 'Voluntariado / causas sociais' },
+  { value: 'other', label: 'Outro' },
+];
+
 /** Extrai só os values — para `z.enum()` e `enum` do Mongoose. */
 export const valuesOf = (options) => options.map((o) => o.value);

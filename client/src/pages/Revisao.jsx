@@ -16,6 +16,11 @@ import {
   POST_USE_FEELINGS,
   REDUCE_ATTEMPTS,
   CONTROL_METHODS,
+  GENDERS,
+  AGE_RANGES,
+  SOCIAL_CLASSES,
+  CONTENT_TYPES,
+  HOBBIES,
 } from '@pesquisa/shared';
 import { useDraft } from '../draft.jsx';
 import { submitSurvey } from '../services/api.js';
@@ -90,6 +95,11 @@ export default function Revisao() {
           ['Nível de ensino', labelOf(EDUCATION_LEVELS, d.educationLevel)],
           ['Área de estudo', d.studyArea ? labelOf(STUDY_AREAS, d.studyArea) : ''],
           ['Trabalha além de estudar', d.worksWhileStudying ? labelOf(WORK_STATUSES, d.worksWhileStudying) : ''],
+          ['Gênero', d.gender ? labelOf(GENDERS, d.gender) : ''],
+          ['Faixa etária', d.ageRange ? labelOf(AGE_RANGES, d.ageRange) : ''],
+          ['Classe social', d.socialClass ? labelOf(SOCIAL_CLASSES, d.socialClass) : ''],
+          ['Tipos de conteúdo', d.contentTypes ? labelsOf(CONTENT_TYPES, d.contentTypes) : ''],
+          ['Hobbies', d.hobbies ? labelsOf(HOBBIES, d.hobbies) : ''],
         ]}
       />
       <Section

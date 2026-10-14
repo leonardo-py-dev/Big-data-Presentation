@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { contextoSchema, EDUCATION_LEVELS, STUDY_AREAS, WORK_STATUSES } from '@pesquisa/shared';
+import { contextoSchema, EDUCATION_LEVELS, STUDY_AREAS, WORK_STATUSES, GENDERS, AGE_RANGES, SOCIAL_CLASSES, CONTENT_TYPES, HOBBIES } from '@pesquisa/shared';
 import { useDraft, cleanEmpty, stripEmpty } from '../draft.jsx';
 import Progress from '../components/Progress.jsx';
 import { SelectField, RadioGroup, StepNav } from '../components/Fields.jsx';
@@ -21,6 +21,11 @@ export default function Contexto() {
       studyArea: draft.studyArea ?? '',
       // radios opcionais: sem default = nenhum pré-selecionado (correto)
       worksWhileStudying: draft.worksWhileStudying,
+      gender: draft.gender ?? '',
+      ageRange: draft.ageRange ?? '',
+      socialClass: draft.socialClass ?? '',
+      contentTypes: draft.contentTypes ?? [],
+      hobbies: draft.hobbies ?? [],
     },
   });
 
@@ -55,6 +60,41 @@ export default function Contexto() {
           options={WORK_STATUSES}
           register={register}
           error={errors.worksWhileStudying}
+        />
+        <SelectField
+          label="Gênero"
+          name="gender"
+          options={GENDERS}
+          register={register}
+          error={errors.gender}
+        />
+        <SelectField
+          label="Faixa etária"
+          name="ageRange"
+          options={AGE_RANGES}
+          register={register}
+          error={errors.ageRange}
+        />
+        <SelectField
+          label="Classe social"
+          name="socialClass"
+          options={SOCIAL_CLASSES}
+          register={register}
+          error={errors.socialClass}
+        />
+        <SelectField
+          label="Principais tipos de conteúdo consumido"
+          name="contentTypes"
+          options={CONTENT_TYPES}
+          register={register}
+          error={errors.contentTypes}
+        />
+        <SelectField
+          label="Principais hobbies / atividades de lazer"
+          name="hobbies"
+          options={HOBBIES}
+          register={register}
+          error={errors.hobbies}
         />
         <StepNav onBack={() => navigate('/pesquisa/consentimento')} submitting={isSubmitting} />
       </form>

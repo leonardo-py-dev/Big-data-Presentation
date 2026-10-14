@@ -10,6 +10,11 @@ import {
   POST_USE_FEELINGS,
   REDUCE_ATTEMPTS,
   CONTROL_METHODS,
+  GENDERS,
+  AGE_RANGES,
+  SOCIAL_CLASSES,
+  CONTENT_TYPES,
+  HOBBIES,
   valuesOf,
 } from '@pesquisa/shared';
 
@@ -28,6 +33,11 @@ const surveyResponseSchema = new Schema(
     educationLevel: { type: String, enum: valuesOf(EDUCATION_LEVELS), required: true },
     studyArea: { type: String, enum: valuesOf(STUDY_AREAS) },
     worksWhileStudying: { type: String, enum: valuesOf(WORK_STATUSES) },
+    gender: { type: String, enum: valuesOf(GENDERS) },
+    ageRange: { type: String, enum: valuesOf(AGE_RANGES) },
+    socialClass: { type: String, enum: valuesOf(SOCIAL_CLASSES) },
+    contentTypes: { type: [{ type: String, enum: valuesOf(CONTENT_TYPES)}] },
+    hobbies: { type: [{ type: String, enum: valuesOf(HOBBIES)}] },
 
     socialNetworks: {
       type: [{ type: String, enum: valuesOf(SOCIAL_NETWORKS) }],
@@ -80,13 +90,17 @@ const surveyResponseSchema = new Schema(
 
 /**
  * Índices APENAS nos campos usados nos filtros administrativos (RF10 + §14):
- * nível de ensino, área de estudo, tempo diário, rede principal, período de envio.
+ * nível de ensino, área de estudo, tempo diário, rede principal, gênero, faixa etária,
+ * classe social, período de envio.
  * Nada além disso — índice sem uso é custo de escrita.
  */
 surveyResponseSchema.index({ educationLevel: 1 });
 surveyResponseSchema.index({ studyArea: 1 });
 surveyResponseSchema.index({ dailyUsage: 1 });
 surveyResponseSchema.index({ mainNetwork: 1 });
+surveyResponseSchema.index({ gender: 1 });
+surveyResponseSchema.index({ ageRange: 1 });
+surveyResponseSchema.index({ socialClass: 1 });
 surveyResponseSchema.index({ createdAt: -1 });
 
 export const SurveyResponse = mongoose.model('SurveyResponse', surveyResponseSchema, 'survey_responses');

@@ -13,6 +13,11 @@ import {
   POST_USE_FEELINGS,
   REDUCE_ATTEMPTS,
   CONTROL_METHODS,
+  GENDERS,
+  AGE_RANGES,
+  SOCIAL_CLASSES,
+  CONTENT_TYPES,
+  HOBBIES,
   valuesOf,
 } from './enums.js';
 
@@ -54,6 +59,11 @@ const contextoFields = {
   ),
   studyArea: optionalEnum(STUDY_AREAS).optional(),
   worksWhileStudying: optionalEnum(WORK_STATUSES).optional(),
+  gender: optionalEnum(GENDERS).optional(),
+  ageRange: optionalEnum(AGE_RANGES).optional(),
+  socialClass: optionalEnum(SOCIAL_CLASSES).optional(),
+  contentTypes: z.array(z.enum(valuesOf(CONTENT_TYPES))).optional(),
+  hobbies: z.array(z.enum(valuesOf(HOBBIES))).optional(),
 };
 
 const habitosFields = {
